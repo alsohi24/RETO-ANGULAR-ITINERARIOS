@@ -33,10 +33,12 @@ import { NestedtableComponent } from './component/nestedtable/nestedtable.compon
 import { MaskComponent } from './componemt/mask/mask.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { NestednewComponent } from './component/nestednew/nestednew.component';
+import { ItinerarioslistingComponent } from './component/itinerarioslisting/itinerarioslisting.component';
 @NgModule({
   declarations: [
     AppComponent,
     TasklistingComponent,
+    ItinerarioslistingComponent,
     AssociatelistingComponent,
     AddassociateComponent,
     CustomerlistingComponent,

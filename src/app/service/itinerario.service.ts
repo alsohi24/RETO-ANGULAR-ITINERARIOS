@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ItinerarioService {
-  baseurl = 'http://localhost:3001/itinerario';
+  baseurl = 'http://localhost:3001/itinerarios';
   constructor(private http: HttpClient) {}
   GetAll(): Observable<Itinerario[]> {
     return this.http.get<Itinerario[]>(this.baseurl);

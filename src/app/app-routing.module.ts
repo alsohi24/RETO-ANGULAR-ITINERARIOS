@@ -12,13 +12,13 @@ import { NestedtableComponent } from './component/nestedtable/nestedtable.compon
 import { MaskComponent } from './componemt/mask/mask.component';
 import { NestednewComponent } from './component/nestednew/nestednew.component';
 import { DocumentviewerComponent } from './component/documentviewer/documentviewer.component';
-import { ItinerarioService } from './service/itinerario.service';
+import { ItinerarioslistingComponent } from './component/itinerarioslisting/itinerarioslisting.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
   {
     path: 'itinerarios',
-    component: ItinerarioService,
+    component: ItinerarioslistingComponent,
     canActivate: [authGuard],
   },
   {

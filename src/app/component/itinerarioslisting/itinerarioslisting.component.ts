@@ -58,7 +58,7 @@ export class ItinerarioslistingComponent implements OnInit {
         this.datasource.sort = this.sort;
       },
       (err) => {
-        alert('Unable to get list of tasks');
+        alert('Unable to get list');
       }
     );
   }

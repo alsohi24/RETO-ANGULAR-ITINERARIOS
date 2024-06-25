@@ -127,7 +127,7 @@ export class UserEffect {
         return this.service.GetMenubyRole(action.userrole).pipe(
           map((data) => {
             console.log(data);
-            this.route.navigate(['task']);
+            this.route.navigate(['itinerarios']);
             return fetchmenusuccess({ menulist: data });
           }),
           catchError((_error) =>
