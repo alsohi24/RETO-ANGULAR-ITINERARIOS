@@ -1,0 +1,72 @@
+<mat-card style="min-height: 500px;">
+  <mat-card>
+    <h1>Welcome! {{user.username}}</h1>
+    <h2>Rol: {{user.role}}</h2>
+    <h3>ID: {{user._id}}</h3>
+  </mat-card>
+  <mat-card-header>
+      <h1>Task Listing</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="searchcontainer">
+      <div class="search-part">
+
+        <form [formGroup]="taskForm" class="search-part" >
+          <mat-form-field>
+            <input type="text" formControlName="newtask" matInput placeholder="Enter new task">
+            <mat-error *ngIf="taskForm.get('newtask').hasError('required')">
+              Task is required.
+            </mat-error>
+            <mat-error *ngIf="taskForm.get('newtask').hasError('alphanumeric')">
+              Task must be alphanumeric.
+            </mat-error>
+          </mat-form-field>
+          <button (click)="FunctionAddTask()" mat-raised-button color="primary" >Agregar
+            (+)</button>
+        </form>
+
+
+      </div>
+
+    </div>
+  </mat-card-content>
+  <mat-card-content>
+      <div *ngIf="errormessage">
+          <h1>{{errormessage}}</h1>
+      </div>
+      <table *ngIf="!errormessage" matSort mat-table [dataSource]="datasource" class="mat-elevation-z8">
+        <ng-container matColumnDef="check">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"><mat-checkbox [(ngModel)]="element.check" (change)="onStatusChange(element)"></mat-checkbox></td>
+      </ng-container>
+          <ng-container matColumnDef="name">
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="startDate">
+              <th mat-header-cell *matHeaderCellDef>Time</th>
+              <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element">
+                  <div *ngIf="user.role=='admin'">
+                    <button (click)="FunctionEdit(element._id)"  color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+                    </button>
+                  </div>
+                  <div *ngIf="!element.check">
+                    <button (click)="FunctionDelete(element._id)" mat-raised-button color="accent">X</button>
+                  </div>
+              </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColums"></tr>
+          <tr mat-row *matRowDef="let row;columns:displayedColums"></tr>
+      </table>
+  </mat-card-content>
+  <br>
+  <mat-card-footer>
+      <mat-paginator *ngIf="!errormessage" [pageSizeOptions]="[5,10,50]" showFirstLastButtons></mat-paginator>
+  </mat-card-footer>
+</mat-card>
