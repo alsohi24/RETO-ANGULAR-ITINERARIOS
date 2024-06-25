@@ -31,7 +31,7 @@ export class ItinerarioslistingComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  displayedColums: string[] = ['check', 'name', 'startDate', 'action'];
+  displayedColums: string[] = ['name', 'startDate', 'precio', 'action'];
   jsonstring = localStorage.getItem('userdata') as string;
   user = JSON.parse(this.jsonstring);
 
